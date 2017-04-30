@@ -42,23 +42,6 @@ public class Scraper {
         return relics;
     }
 
-    public void getData(){
-        String url = "http://warframe.wikia.com/wiki/Void_Relic";
-        Document doc = null;
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (Exception ex){
-            JOptionPane.showMessageDialog(null,"Cannot connect to Warframe wiki!");
-        }
-        Element container = doc.select("#mw-customcollapsible-rewarddrops").first();
-        Elements tabbertabs = container.select(".tabbertab");
-        Element list = tabbertabs.first();
-        Elements rows = list.select("tr");
-        for (Element row:rows){
-            System.out.println(row.toString());
-        }
-    }
-
     public ArrayList<Prime> getPrimes() {
         primes = new ArrayList<>();
         String url = "http://warframe.wikia.com/wiki/Void_Relic";
@@ -74,16 +57,37 @@ public class Scraper {
         Element table = list.select("tbody").first();
         Elements rows = table.select("tr");
         Elements previous = null;
+        boolean first = true;
         for (Element row:rows){
             Elements data = row.select("td");
-            if (previous!=null&&previous.first()!=null) {
+            if (data!=null&&data.first()!=null) {
                 String name = data.get(0).text();
-                if (!previous.get(0).text().equals(name)){
+                if (first){
+                    first = false;
+                    primes.add(new Prime(name));
+                } else if (!previous.get(0).text().equals(name)&&name.length()>6) {
                     primes.add(new Prime(name));
                 }
             }
             previous = data;
         }
         return primes;
+    }
+
+    public void getData(){
+        String url = "http://warframe.wikia.com/wiki/Void_Relic";
+        Document doc = null;
+        try {
+            doc = Jsoup.connect(url).get();
+        } catch (Exception ex){
+            JOptionPane.showMessageDialog(null,"Cannot connect to Warframe wiki!");
+        }
+        Element container = doc.select("#mw-customcollapsible-rewarddrops").first();
+        Elements tabbertabs = container.select(".tabbertab");
+        Element list = tabbertabs.first();
+        Elements rows = list.select("tr");
+        for (Element row:rows){
+            System.out.println(row.toString());
+        }
     }
 }
