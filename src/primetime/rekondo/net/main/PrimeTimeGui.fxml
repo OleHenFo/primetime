@@ -27,26 +27,21 @@
                 </Menu>
             </menus>
         </MenuBar>
-        <ScrollPane fx:id="scroller" layoutX="10.0" layoutY="37.0" prefHeight="358.0" prefWidth="250.0" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="40">
-            <content>
-                <AnchorPane fx:id="table_anchor" minHeight="0.0" minWidth="0.0" prefHeight="${scroller.height}" prefWidth="${scroller.width*0.97}">
-                    <children>
-                        <TableView fx:id="primeTable" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-                            <columns>
-                                <TableColumn fx:id="prime_column" prefWidth="${scroller.width}" text="Prime Parts" />
-                            </columns>
-                        </TableView>
-                        <TableView fx:id="relicTable" layoutY="14.0" managed="false" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
-                            <columns>
-                                <TableColumn fx:id="type_column" prefWidth="${scroller.width * 0.32}" text="Type" />
-                                <TableColumn fx:id="tier_column" prefWidth="${scroller.width * 0.32}" text="Tier" />
-                                <TableColumn fx:id="odds_column" prefWidth="${scroller.width * 0.32}" text="Odds" />
-                            </columns>
-                        </TableView>
-                    </children>
-                </AnchorPane>
-            </content>
-        </ScrollPane>
+        <AnchorPane fx:id="table_anchor" layoutX="10.0" layoutY="37.0" prefHeight="358.0" prefWidth="250.0" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="40">
+            <children>
+                <TableView id="primeTable" fx:id="primeTable" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                    <columns>
+                        <TableColumn fx:id="primeNames" prefWidth="${primeTable.width}" text="Prime Parts" />
+                    </columns>
+                </TableView>
+                <TableView fx:id="relicTable" layoutY="14.0" managed="false" prefHeight="200.0" prefWidth="200.0" visible="false" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0">
+                    <columns>
+                        <TableColumn fx:id="relicTier" prefWidth="${relicTable.width*0.5}" text="Tier" />
+                        <TableColumn fx:id="relicType" prefWidth="${relicTable.width*0.5}" text="Type" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
       <AnchorPane layoutX="416.0" layoutY="175.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: DDDDDD;" AnchorPane.bottomAnchor="10" AnchorPane.leftAnchor="270" AnchorPane.rightAnchor="10" AnchorPane.topAnchor="40">
          <children>
             <Label layoutX="14.0" layoutY="14.0" text="Name goes here" underline="true">

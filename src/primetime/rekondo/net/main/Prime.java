@@ -12,12 +12,10 @@ import java.util.ArrayList;
 public class Prime {
     private StringProperty name;
     private ArrayList<Relic> relics;
-    private boolean vaulted;
 
-    public Prime(String name, ArrayList<Relic> relics, boolean vaulted) {
+    public Prime(String name, ArrayList<Relic> relics) {
         this.name = new SimpleStringProperty(name);
         this.relics = relics;
-        this.vaulted = vaulted;
     }
 
     public Prime(String name) {
@@ -31,9 +29,5 @@ public class Prime {
 
     public ArrayList<Relic> getRelics() {
         return relics;
-    }
-
-    public boolean isVaulted() {
-        return vaulted;
     }
 }
